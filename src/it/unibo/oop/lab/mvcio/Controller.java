@@ -1,5 +1,8 @@
 package it.unibo.oop.lab.mvcio;
 
+import java.io.IOException;
+import java.io.PrintStream;
+
 public class Controller {
 
     /*
@@ -24,17 +27,10 @@ public class Controller {
      * System.getProperty("file.separator"). The combined use of those methods leads
      * to a software that runs correctly on every platform.
      */
-    private String filePath;
-    private String fileName;
-    /**
-     * 
-     */
-    public Controller() {
-        this.filePath = System.getProperty("user.home")
-                + System.getProperty("file.separator")
-                + Controller.class.getSimpleName() + ".txt";
-        this.fileName = Controller.class.getSimpleName();
-    }
+    private String filePath = System.getProperty("user.home")
+    + System.getProperty("file.separator")
+    + Controller.class.getSimpleName() + ".txt";
+    private String fileName = Controller.class.getSimpleName();
     /**
      * 
      * @return the filePath
@@ -60,5 +56,25 @@ public class Controller {
      */
     public String getCurrentFile() {
         return fileName;
+    }
+    /**
+     * 
+     * @param string is the string that is going to be written on file
+     * @throws IOException
+     */
+    public void writeOnFile(final String string) throws IOException {
+        try (PrintStream ps = new PrintStream(filePath)) {
+            ps.print(string);
+        }
+    }
+    /**
+     * 
+     * @param args ignored
+     */
+    public static void main(final String[] args) {
+        final Controller c1 = new Controller();
+        System.out.println(c1.getCurrentFile());
+        c1.setNewCurrentFile("aa");
+        System.out.println(c1.getCurrentFile());
     }
 }
