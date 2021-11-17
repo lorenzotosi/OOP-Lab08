@@ -1,9 +1,15 @@
 package it.unibo.oop.lab.mvcio;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  * A very simple program using a graphical interface.
@@ -57,16 +63,30 @@ public final class SimpleGUI {
          * on screen. Results may vary, but it is generally the best choice.
          */
         frame.setLocationByPlatform(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("My first java gui");
+        final JPanel myPanel = new JPanel();
+        myPanel.setLayout(new BorderLayout());
+        frame.add(myPanel);
+        final JButton myButton = new JButton("Save");
+        myPanel.add(myButton, BorderLayout.SOUTH);
+        final JTextArea myTextField = new JTextArea();
+        myPanel.add(myTextField);
+        myButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(final ActionEvent e) {
+                
+            }
+        });
+        frame.setVisible(true);
     }
     /**
      * 
      * @param args ignored
+     * @throws IOException 
      */
     public static void main(final String[] args) {
-        final Controller c1 = new Controller();
-        System.out.println(c1.getfilePath());
-        c1.setNewCurrentFile("ciao");
-        System.out.println(c1.getfilePath());
+        new SimpleGUI();
     }
 
 }
