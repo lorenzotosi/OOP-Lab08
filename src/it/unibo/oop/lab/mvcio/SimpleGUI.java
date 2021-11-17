@@ -58,5 +58,15 @@ public final class SimpleGUI {
          */
         frame.setLocationByPlatform(true);
     }
+    /**
+     * 
+     * @param args ignored
+     */
+    public static void main(final String[] args) {
+        final Controller c1 = new Controller();
+        System.out.println(c1.getfilePath());
+        c1.setNewCurrentFile("ciao");
+        System.out.println(c1.getfilePath());
+    }
 
 }
