@@ -1,14 +1,17 @@
 package it.unibo.oop.lab.iogui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Random;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -37,10 +40,26 @@ public class BadIOGUI {
     public BadIOGUI() {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
+        final JPanel newPanel = new JPanel();
+        newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
+        canvas.add(newPanel, BorderLayout.CENTER);
         final JButton write = new JButton("Write on file");
-        canvas.add(write, BorderLayout.CENTER);
+        newPanel.add(write);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        final JButton read = new JButton("Read");
+        newPanel.add(read);
+        read.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                try {
+                    final List<String> read = Files.readAllLines(Paths.get(PATH));
+                    System.out.println(read);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
         /*
          * Handlers
          */
@@ -73,10 +92,11 @@ public class BadIOGUI {
          * issue). It is MUCH better than manually specify the size of a window
          * in pixel: it takes into account the current resolution.
          */
-        final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        /*final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
-        frame.setSize(sw / PROPORTION, sh / PROPORTION);
+        frame.setSize(sw / PROPORTION, sh / PROPORTION);*/
+        frame.pack();
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
          * flag makes the OS window manager take care of the default positioning
