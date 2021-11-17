@@ -65,7 +65,7 @@ public final class SimpleGUI {
          */
         frame.setLocationByPlatform(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("My first java gui");
+        frame.setTitle("My first graphical interface");
         final JPanel myPanel = new JPanel();
         myPanel.setLayout(new BorderLayout());
         frame.add(myPanel);
