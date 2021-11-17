@@ -24,7 +24,8 @@ public class Controller {
      * System.getProperty("file.separator"). The combined use of those methods leads
      * to a software that runs correctly on every platform.
      */
-    private final String filePath;
+    private String filePath;
+    private String fileName;
     /**
      * 
      */
@@ -32,12 +33,32 @@ public class Controller {
         this.filePath = System.getProperty("user.home")
                 + System.getProperty("file.separator")
                 + Controller.class.getSimpleName() + ".txt";
+        this.fileName = Controller.class.getSimpleName();
     }
     /**
      * 
-     * @return the filepath
+     * @return the filePath
      */
-    public String getPATH() {
+    public String getfilePath() {
         return filePath;
+    }
+    /**
+     * 
+     * this method sets a new current file.
+     * 
+     * @param name is the new file name
+     */
+    public void setNewCurrentFile(final String name) {
+        this.filePath = System.getProperty("user.home")
+                + System.getProperty("file.separator")
+                + name + ".txt";
+        this.fileName = name;
+    }
+    /**
+     * 
+     * @return the file name
+     */
+    public String getCurrentFile() {
+        return fileName;
     }
 }
