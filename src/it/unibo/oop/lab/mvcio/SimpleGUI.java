@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -68,14 +69,18 @@ public final class SimpleGUI {
         final JPanel myPanel = new JPanel();
         myPanel.setLayout(new BorderLayout());
         frame.add(myPanel);
+        final JTextArea myTextArea = new JTextArea();
+        myPanel.add(myTextArea);
         final JButton myButton = new JButton("Save");
         myPanel.add(myButton, BorderLayout.SOUTH);
-        final JTextArea myTextField = new JTextArea();
-        myPanel.add(myTextField);
         myButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(final ActionEvent e) {
-                
+                try {
+                    new Controller().writeOnFile(myTextArea.getText());
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
         frame.setVisible(true);
