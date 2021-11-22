@@ -1,11 +1,7 @@
 package it.unibo.oop.lab.advanced;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class SetValues {
@@ -43,24 +39,24 @@ public class SetValues {
     }
     /**
      * 
-     * @return a
+     * @return min
      */
     public int getMin() {
-        return min;
+        return this.min;
     }
     /**
      * 
-     * @return a
+     * @return max
      */
     public int getMax() {
-        return max;
+        return this.max;
     }
     /**
      * 
-     * @return a
+     * @return attempts
      */
     public int getAttempts() {
-        return attempts;
+        return this.attempts;
     }
     /**
      * 
