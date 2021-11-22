@@ -66,11 +66,11 @@ public class SetValues {
      * 
      * @param args ignored
      */
-    public static void main(final String[] args) {
+    /*public static void main(final String[] args) {
         final SetValues s1 = new SetValues();
         s1.readFromFile();
         //System.out.println(s1.getAttempts());
         //System.out.println(s1.getMax());
         //System.out.println(s1.getMin());
-    }
+    }*/
 }
