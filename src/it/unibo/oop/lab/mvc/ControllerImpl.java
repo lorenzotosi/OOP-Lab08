@@ -9,7 +9,7 @@ public class ControllerImpl implements Controller {
     private String next;
     /**
      * 
-     * @param next a
+     * @param next next string to print
      * 
      */
     public void setNextStringToPrint(final String next) {
@@ -22,7 +22,7 @@ public class ControllerImpl implements Controller {
     }
     /**
      * 
-     * @return a
+     * @return next string to print
      * 
      */
     public String getNextStringToPrint() {
@@ -30,7 +30,7 @@ public class ControllerImpl implements Controller {
     }
     /**
      * 
-     * @return a
+     * @return history of prints
      * 
      */
     public List<String> getHistoryOfPrints() {
